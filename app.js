@@ -1,0 +1,15 @@
+const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+const BodyParser = require("body-parser");
+const Upload = require("express-fileupload");
+const cors = require("cors");
+const ApplyMiddleware = require("./Middleware/ErrorCallBackReturn");
+// const ApplyMiddleware = require("./Middleware/ErrorCallBackReturn");
+app.use(express.json());
+app.use(cookieParser());
+app.use(BodyParser.urlencoded({ extended: true }));
+app.use(Upload());
+app.use(cors());
+app.use(ApplyMiddleware);
+module.exports = app;
